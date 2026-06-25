@@ -1,0 +1,37 @@
+@model cruddemo.Data.Student
+
+@{
+    ViewData["Title"] = "Delete Student";
+}
+
+<div class="page-header">
+    <h1>Delete Student</h1>
+</div>
+
+<div style="max-width:600px;">
+    <div class="delete-warning">
+        ⚠️ This action cannot be undone. The following student record will be permanently removed.
+    </div>
+
+    <div class="card" style="margin-bottom:1.5rem;">
+        <dl class="detail-grid">
+            <dt>@Html.DisplayNameFor(model => model.Name)</dt>
+            <dd style="font-weight:500;">@Html.DisplayFor(model => model.Name)</dd>
+
+            <dt>@Html.DisplayNameFor(model => model.Email)</dt>
+            <dd>@Html.DisplayFor(model => model.Email)</dd>
+
+            <dt>@Html.DisplayNameFor(model => model.course)</dt>
+            <dd><span class="course-badge">@Html.DisplayFor(model => model.course)</span></dd>
+
+            <dt>@Html.DisplayNameFor(model => model.Enrollmentdate)</dt>
+            <dd>@Model?.Enrollmentdate.ToString("dd MMM yyyy")</dd>
+        </dl>
+    </div>
+
+    <form asp-action="Delete" style="display:flex; gap:1rem; align-items:center;">
+        <input type="hidden" asp-for="StudId" />
+        <button type="submit" class="btn-danger-custom">Yes, Delete</button>
+        <a asp-action="Index" class="btn-back">← Cancel</a>
+    </form>
+</div>

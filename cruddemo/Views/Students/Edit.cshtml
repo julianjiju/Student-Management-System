@@ -1,0 +1,52 @@
+@model cruddemo.Data.Student
+
+@{
+    ViewData["Title"] = "Edit Student";
+}
+
+<div class="page-header">
+    <h1>Edit Student</h1>
+    <p>Update the student's information below</p>
+</div>
+
+<div class="form-card">
+    <form asp-action="Edit">
+        <div asp-validation-summary="ModelOnly" class="text-danger" style="margin-bottom:1rem;"></div>
+        <input type="hidden" asp-for="StudId" />
+
+        <div class="form-field">
+            <label asp-for="Name"></label>
+            <input asp-for="Name" />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+
+        <div class="form-field">
+            <label asp-for="Email"></label>
+            <input asp-for="Email" />
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+
+        <div class="form-field">
+            <label asp-for="course"></label>
+            <input asp-for="course" />
+            <span asp-validation-for="course" class="text-danger"></span>
+        </div>
+
+        <div class="form-field">
+            <label asp-for="Enrollmentdate"></label>
+            <input asp-for="Enrollmentdate" type="date" />
+            <span asp-validation-for="Enrollmentdate" class="text-danger"></span>
+        </div>
+
+        <div style="display:flex; align-items:center; gap:1rem; margin-top:1.5rem;">
+            <button type="submit" class="btn-primary-custom">Save Changes</button>
+            <a asp-action="Index" class="btn-back">← Back to list</a>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

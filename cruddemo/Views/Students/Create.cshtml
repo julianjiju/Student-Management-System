@@ -1,0 +1,51 @@
+@model cruddemo.Data.Student
+
+@{
+    ViewData["Title"] = "Add Student";
+}
+
+<div class="page-header">
+    <h1>Add Student</h1>
+    <p>Fill in the details to enroll a new student</p>
+</div>
+
+<div class="form-card">
+    <form asp-action="Create">
+        <div asp-validation-summary="ModelOnly" class="text-danger" style="margin-bottom:1rem;"></div>
+
+        <div class="form-field">
+            <label asp-for="StudId"></label>
+            <input asp-for="StudId" placeholder="e.g. STU001" />
+            <span asp-validation-for="StudId" class="text-danger"></span>
+        </div>
+
+        <div class="form-field">
+            <label asp-for="Name"></label>
+            <input asp-for="Name" placeholder="Full name" />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+
+        <div class="form-field">
+            <label asp-for="Email"></label>
+            <input asp-for="Email" placeholder="email@example.com" />
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+
+        <div class="form-field">
+            <label asp-for="course"></label>
+            <input asp-for="course" placeholder="e.g. B.Tech CSE" />
+            <span asp-validation-for="course" class="text-danger"></span>
+        </div>
+
+        <div class="form-field">
+            <label asp-for="Enrollmentdate"></label>
+            <input asp-for="Enrollmentdate" type="date" />
+            <span asp-validation-for="Enrollmentdate" class="text-danger"></span>
+        </div>
+
+        <div style="display:flex; align-items:center; gap:1rem; margin-top:1.5rem;">
+            <button type="submit" class="btn-primary-custom">Create Student</button>
+            <a asp-action="Index" class="btn-back">← Back to list</a>
+        </div>
+    </form>
+</div>

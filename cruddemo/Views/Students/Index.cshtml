@@ -1,0 +1,45 @@
+@model IEnumerable<cruddemo.Data.Student>
+
+@{
+    ViewData["Title"] = "Students";
+}
+
+<div class="page-header" style="display:flex; align-items:center; justify-content:space-between;">
+    <div>
+        <h1>Students</h1>
+        <p>Manage enrolled students and their records</p>
+    </div>
+    <a asp-action="Create" class="btn-primary-custom">+ Add Student</a>
+</div>
+
+<div class="card">
+    <table class="stud-table">
+        <thead>
+            <tr>
+                <th>@Html.DisplayNameFor(model => model.Name)</th>
+                <th>@Html.DisplayNameFor(model => model.Email)</th>
+                <th>@Html.DisplayNameFor(model => model.course)</th>
+                <th>@Html.DisplayNameFor(model => model.Enrollmentdate)</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td style="font-weight:500;">@Html.DisplayFor(model => item.Name)</td>
+                    <td style="color:#718096;">@Html.DisplayFor(model => item.Email)</td>
+                    <td><span class="course-badge">@Html.DisplayFor(model => item.course)</span></td>
+                    <td style="color:#718096;">@item.Enrollmentdate.ToString("dd MMM yyyy")</td>
+                    <td>
+                        <div class="action-links">
+                            <a asp-action="Edit" asp-route-studid="@item.StudId" class="action-link edit">Edit</a>
+                            <a asp-action="Details" asp-route-studid="@item.StudId" class="action-link details">Details</a>
+                            <a asp-action="Delete" asp-route-studid="@item.StudId" class="action-link delete">Delete</a>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

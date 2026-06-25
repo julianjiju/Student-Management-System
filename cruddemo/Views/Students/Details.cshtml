@@ -1,0 +1,31 @@
+@model cruddemo.Data.Student
+
+@{
+    ViewData["Title"] = "Student Details";
+}
+
+<div class="page-header">
+    <h1>Student Details</h1>
+    <p>Viewing record for @Model?.Name</p>
+</div>
+
+<div class="card" style="max-width:600px; margin-bottom:1.5rem;">
+    <dl class="detail-grid">
+        <dt>@Html.DisplayNameFor(model => model.Name)</dt>
+        <dd style="font-weight:500;">@Html.DisplayFor(model => model.Name)</dd>
+
+        <dt>@Html.DisplayNameFor(model => model.Email)</dt>
+        <dd>@Html.DisplayFor(model => model.Email)</dd>
+
+        <dt>@Html.DisplayNameFor(model => model.course)</dt>
+        <dd><span class="course-badge">@Html.DisplayFor(model => model.course)</span></dd>
+
+        <dt>@Html.DisplayNameFor(model => model.Enrollmentdate)</dt>
+        <dd>@Model?.Enrollmentdate.ToString("dd MMM yyyy")</dd>
+    </dl>
+</div>
+
+<div style="display:flex; gap:1rem; align-items:center;">
+    <a asp-action="Edit" asp-route-studid="@Model?.StudId" class="btn-primary-custom">Edit</a>
+    <a asp-action="Index" class="btn-back">← Back to list</a>
+</div>
